@@ -1,0 +1,36 @@
+.form {
+    border-radius: 5px;
+    box-shadow: 0px 0px 38px -3px rgba(0, 0, 0, 0.75);
+    margin: 0 auto;
+    width: 50%;
+}
+
+.send__submit {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.submit {
+    color: white;
+    width: 25%;
+    border-radius: 15px;
+    font-weight: 700;
+    text-align: center;
+    border: 1px solid transparent;
+    background: rgb(0, 140, 255);
+}
+
+.center {
+    margin: 0 auto;
+}
+
+#carrusel {
+    margin-top: 8em;
+    margin-bottom: 8em;
+}
+
+#botton-style {
+    margin: top -8em;
+    ;
+}
