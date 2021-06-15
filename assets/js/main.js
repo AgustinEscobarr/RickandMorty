@@ -68,6 +68,7 @@ function traerPersonaje(url, callback) {
 
 function insertarCartas(xhttp) {
 
+    document.getElementById("contenedorHtml").innerHTML = "";
     let i = 0;
     let contenedor = document.getElementById("contenedorHtml");
     console.log(contenedor);
@@ -180,24 +181,17 @@ function insertarCartas(xhttp) {
     <div class="col">
     
     
-    <div class="card" style="width: 18rem;">
-  <img src="${xhttp.results[i+2].image}" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">${xhttp.results[i+2].name}</h5>
-    <p class="card-text">Specie: ${xhttp.results[i+2].species}</br>  Gender: ${xhttp.results[i+2].gender}</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-<div>
-    
-    
-    </div>
- 
-  </div>
-  </div>
-
-
-`;
+    ${xhttp.results[i+2] && `
+              <div class="card"">
+                <img src="${xhttp.results[i+2].image}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">${xhttp.results[i+2].name}</h5>
+                  <p class="card-text">Specie: ${xhttp.results[i+2].species}</br>  Gender: ${xhttp.results[i+2].gender}</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>`}
+            </div>
+            `;
             contenedor.appendChild(carta);
             i = i + 2;
 
