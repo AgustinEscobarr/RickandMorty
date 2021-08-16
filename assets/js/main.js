@@ -67,133 +67,81 @@ function traerPersonaje(url, callback) {
 }
 
 function insertarCartas(xhttp) {
-
-    document.getElementById("contenedorHtml").innerHTML = "";
-    let i = 0;
+    document.getElementById("contenedorHtml").innerHTML = '';
     let contenedor = document.getElementById("contenedorHtml");
     console.log(contenedor);
-    for (i = 0; xhttp.results[i] != undefined; i++) {
-
-        if (i == 0) {
+    for (let i = 0; xhttp.results[i] != undefined; i += 3) {
+        if (i === 0) {
 
             let primeraCarta = document.createElement("div");
             primeraCarta.classList.add("carousel-item");
             primeraCarta.classList.add("active");
-
             primeraCarta.innerHTML = `
-    <div class="container">
-    <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-    <div class="container">
-    <div class="col">
-
-
-
-    <div class="card" style="width: 18rem;">
-    <img src="${xhttp.results[i].image}" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">${xhttp.results[i].name}</h5>
-      <p class="card-text">Specie: ${xhttp.results[i].species}</br>  Gender: ${xhttp.results[i].gender}</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-    </div>
-    
-      </div>
-      <div class="container">
-    <div class="col">
-    
-    
-    <div class="card" style="width: 18rem;">
-  <img src="${xhttp.results[i+1].image}" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">${xhttp.results[i+1].name}</h5>
-    <p class="card-text">Specie: ${xhttp.results[i+1].species}</br>  Gender: ${xhttp.results[i+1].gender}</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-</div>
-    
-    
-    </div>
-    <div class="container">
-    <div class="col">
-    
-    
-    <div class="card" style="width: 18rem;">
-  <img src="${xhttp.results[i+2].image}" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">${xhttp.results[i+2].name}</h5>
-    <p class="card-text">Specie: ${xhttp.results[i+2].species}</br>  Gender: ${xhttp.results[i+2].gender}</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-<div>
-    
-    
-    </div>
- 
-  </div>
-  </div>
-
-
-`;
+          <div class="CardContainer">
+            <div class="card">
+              <img src="${xhttp.results[i].image}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">${xhttp.results[i].name}</h5>
+                <p class="card-text">Specie: ${xhttp.results[i].species}</br>  Gender: ${xhttp.results[i].gender}</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+            <div class="card">
+              <img src="${xhttp.results[i+1].image}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">${xhttp.results[i+1].name}</h5>
+                <p class="card-text">Specie: ${xhttp.results[i+1].species}</br>  Gender: ${xhttp.results[i+1].gender}</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+                
+            <div class="card">
+              <img src="${xhttp.results[i+2].image}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">${xhttp.results[i+2].name}</h5>
+                <p class="card-text">Specie: ${xhttp.results[i+2].species}</br>  Gender: ${xhttp.results[i+2].gender}</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+          `;
             contenedor.appendChild(primeraCarta);
-            i = i + 2;
+
         } else {
             let carta = document.createElement("div"); //cree un nodo especificado por su TagName
             carta.classList.add("carousel-item"); //agregue una CLASE
             carta.innerHTML = `
-    <div class="container">
-    <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-    <div class="container">
-    <div class="col">
-
-
-
-    <div class="card" style="width: 18rem;">
-    <img src="${xhttp.results[i].image}" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">${xhttp.results[i].name}</h5>
-      <p class="card-text">Specie: ${xhttp.results[i].species}</br>  Gender: ${xhttp.results[i].gender}</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-    </div>
-    
-      </div>
-      <div class="container">
-    <div class="col">
-    
-    
-    <div class="card" style="width: 18rem;">
-  <img src="${xhttp.results[i+1].image}" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">${xhttp.results[i+1].name}</h5>
-    <p class="card-text">Specie: ${xhttp.results[i+1].species}</br>  Gender: ${xhttp.results[i+1].gender}</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-</div>
-    
-    
-    </div>
-    <div class="container">
-    <div class="col">
-    
-    
-    ${xhttp.results[i+2] && `
-              <div class="card"">
-                <img src="${xhttp.results[i+2].image}" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">${xhttp.results[i+2].name}</h5>
-                  <p class="card-text">Specie: ${xhttp.results[i+2].species}</br>  Gender: ${xhttp.results[i+2].gender}</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>`}
+          <div class="CardContainer">
+            <div class="card">
+              <img src="${xhttp.results[i].image}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">${xhttp.results[i].name}</h5>
+                <p class="card-text">Specie: ${xhttp.results[i].species}</br>  Gender: ${xhttp.results[i].gender}</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
             </div>
-            `;
+            <div class="card">
+              <img src="${xhttp.results[i+1].image}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">${xhttp.results[i+1].name}</h5>
+                <p class="card-text">Specie: ${xhttp.results[i+1].species}</br>  Gender: ${xhttp.results[i+1].gender}</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+                
+            ${xhttp.results[i+2] && `
+            <div class="card"">
+              <img src="${xhttp.results[i+2].image}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">${xhttp.results[i+2].name}</h5>
+                <p class="card-text">Specie: ${xhttp.results[i+2].species}</br>  Gender: ${xhttp.results[i+2].gender}</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>`}
+          </div>
+          `;
             contenedor.appendChild(carta);
-            i = i + 2;
+            
 
 
         }
